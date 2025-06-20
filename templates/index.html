@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Todo List</title>
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    />
+    <style>
+        body {
+          background-image: url('data:image/jpeg;base64,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');
+          background-size: cover;
+          background-position: center;
+          position: relative;
+          min-height: 100vh;
+          margin: 0;
+          padding: 0;
+          overflow-x: hidden;
+        }
+
+        body::before {
+          content: "";
+          position: fixed;
+          top: 0; left: 0; right: 0; bottom: 0;
+          background: rgba(0, 0, 0, 0.3); /* subtle dark overlay */
+          backdrop-filter: brightness(0.7) saturate(0.7); /* dims and desaturates */
+          z-index: -1;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 2rem 1.5rem;
+            margin-top: 2rem;
+            color: white;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        input,
+        select {
+            background: rgba(255, 255, 255, 0.2) !important;
+            color: white !important;
+        }
+
+        input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .form-control:focus {
+            box-shadow: none;
+            border-color: white;
+        }
+
+        .btn-primary {
+            background-color: #6f42c1;
+            border-color: #6f42c1;
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+            border-color: #dc3545;
+        }
+
+        .btn-success {
+            background-color: #198754;
+            border-color: #198754;
+        }
+
+        /* Responsive fixes */
+        @media (max-width: 575.98px) {
+            .glass-card {
+                padding: 1rem;
+                margin-top: 1rem;
+            }
+
+            form.row.g-3 > div {
+                margin-bottom: 0.75rem;
+            }
+
+            ul.list-group li {
+                flex-direction: column;
+                align-items: flex-start !important;
+                gap: 0.5rem;
+            }
+
+            ul.list-group li div:last-child a {
+                margin-right: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+        <div class="glass-card">
+            <h2 class="text-center mb-4">📝 Your Todo List</h2>
+
+            <form method="POST" class="row g-3">
+                <div class="col-12 col-sm-6 col-md-4">
+                    <input
+                        type="text"
+                        name="content"
+                        class="form-control"
+                        placeholder="Add a new task..."
+                        required
+                    />
+                </div>
+                <div class="col-6 col-sm-3 col-md-2">
+                    <input type="date" name="due_date" class="form-control" />
+                </div>
+                <div class="col-6 col-sm-3 col-md-2">
+                    <select name="priority" class="form-control">
+                        <option>Low</option>
+                        <option selected>Medium</option>
+                        <option>High</option>
+                    </select>
+                </div>
+                <div class="col-12 col-sm-6 col-md-2">
+                    <input
+                        type="text"
+                        name="category"
+                        class="form-control"
+                        placeholder="Category"
+                    />
+                </div>
+                <div class="col-12 col-sm-6 col-md-2 d-grid">
+                    <button type="submit" class="btn btn-primary w-100">
+                        Add
+                    </button>
+                </div>
+            </form>
+
+            <hr class="text-white" />
+
+            <form method="GET" class="mb-3">
+                <input
+                    type="text"
+                    name="q"
+                    class="form-control"
+                    placeholder="Search your todos..."
+                />
+            </form>
+
+            <ul class="list-group">
+                {% for item in items %}
+                <li
+                    class="list-group-item d-flex justify-content-between align-items-center flex-wrap"
+                    style="background: rgba(255,255,255,0.1); color: white;"
+                >
+                    <div>
+                        <strong>{{ item.content }}</strong>
+                        {% if item.due_date %}
+                        - <small>Due: {{ item.due_date }}</small>
+                        {% endif %}
+                        {% if item.category %}
+                        - <small>📁 {{ item.category }}</small>
+                        {% endif %}
+                        <span
+                            class="badge bg-{{ 'danger' if item.priority == 'High' else 'warning' if item.priority == 'Medium' else 'info' }}"
+                            >{{ item.priority }}</span
+                        >
+                        {% if item.completed %}
+                        <span class="badge bg-success">✔ Done</span>
+                        {% endif %}
+                    </div>
+                    <div class="mt-2 mt-md-0">
+                        {% if not item.completed %}
+                        <a
+                            href="{{ url_for('complete', item_id=item.id) }}"
+                            class="btn btn-success btn-sm me-1 mb-1 mb-md-0"
+                            >Complete</a
+                        >
+                        {% endif %}
+                        <a
+                            href="{{ url_for('edit', item_id=item.id) }}"
+                            class="btn btn-warning btn-sm me-1 mb-1 mb-md-0"
+                            >Edit</a
+                        >
+                        <a
+                            href="{{ url_for('delete', item_id=item.id) }}"
+                            class="btn btn-danger btn-sm"
+                            >Delete</a
+                        >
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+
+            <p class="mt-4 text-center">
+                ✅ Completed: {{ completed }} / {{ total }} tasks
+                |
+                <a href="{{ url_for('logout') }}" class="btn btn-outline-light btn-sm"
+                    >Logout</a
+                >
+            </p>
+        </div>
+    </div>
+</body>
+</html>
